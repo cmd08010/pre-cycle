@@ -29,7 +29,7 @@ class SignUp extends Component {
 
     signUp(this.state)
       .then(() => signIn(this.state))
-      .then(res => setUser(res.data.user))
+      .then(res => console.log(res, "my res"))
       .then(() => msgAlert({
         heading: 'Sign Up Success',
         message: messages.signUpSuccess,
@@ -37,6 +37,7 @@ class SignUp extends Component {
       }))
       .then(() => history.push('/'))
       .catch(error => {
+        console.log(error)
         this.setState({ email: '', password: '', passwordConfirmation: '' })
         msgAlert({
           heading: 'Sign Up Failed with error: ' + error.message,
@@ -72,6 +73,7 @@ class SignUp extends Component {
                 name="password"
                 value={password}
                 type="password"
+                minLength="5"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
@@ -83,6 +85,7 @@ class SignUp extends Component {
                 name="passwordConfirmation"
                 value={passwordConfirmation}
                 type="password"
+                minLength="5"
                 placeholder="Confirm Password"
                 onChange={this.handleChange}
               />

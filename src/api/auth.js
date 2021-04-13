@@ -5,13 +5,13 @@ export const signUp = credentials => {
   return axios({
     method: 'POST',
     url: apiUrl + '/sign-up/',
-    data: JSON.stringify({
+    data: {
       credentials: {
         email: credentials.email,
         password: credentials.password,
         password_confirmation: credentials.passwordConfirmation
       }
-    })
+    }
   })
 }
 
